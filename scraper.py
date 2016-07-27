@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 bigList = []
 today = datetime.date.today()
 
-
 sightRaw = requests.get("http://oskicat.berkeley.edu/search~S43?/tsight+and+sound/tsight+and+sound/1,2,13,B/crC1764132&FF=tsight+and+sound&8,,9")
 ss = sightRaw.content
 sightSoup = BeautifulSoup(ss, "lxml")
@@ -93,7 +92,6 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
     problems = server.sendmail(from_addr, to_addr_list, message)
     server.quit()
 
-
 sendemail(from_addr    = "pfalibraryjournals@gmail.com", 
           to_addr_list = ["mcq@berkeley.edu","aharris@berkeley.edu"],
           cc_addr_list = [], 
@@ -101,11 +99,3 @@ sendemail(from_addr    = "pfalibraryjournals@gmail.com",
           message      = output,
           login        = "pfalibraryjournals",
           password     = "PASSWORD")
-
-# print(output)
-
-# print("As of "+str(today)+" these are the latest issues of periodicals received in the library:"+"\n"+("\n".join(bigList)))
-# print(BeautifulSoup.prettify(sightIssues[-1]))
-# print(histList)
-# print(scopeSoup.prettify)
-
