@@ -8,6 +8,8 @@ The script uses a dummy gmail account that was created for this purpose. We coul
 
 Ideally this will be run on the first (Wednesday?) of the month via a cron job on a BAMPFA-owned/managed/used server. If it runs on a Wednesday, it's more likely to be seen by the curators since the 1st of a month might be on a weekend or, like Monday or Tuesday, often falls on a holiday.
 
+Oh, also this requires installation of the Python modules BeautifulSoup and Requests.
+
 ## Sample output:
 
 The output is plain text that reads like this:
