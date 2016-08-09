@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 
 bigList = []
 today = datetime.date.today()
+readableToday = today.strftime("%B %d, %Y")
 
 sightRaw = requests.get("http://oskicat.berkeley.edu/search~S43?/tsight+and+sound/tsight+and+sound/1,2,13,B/crC1764132&FF=tsight+and+sound&8,,9")
 ss = sightRaw.content
@@ -74,7 +75,7 @@ for i in presIssues[-1]:
     
 bigList.append("Journal of Film Preservation: "+str(presList[0])+" Volume "+str(presList[8]))
 
-output = ("As of "+str(today)+" these are the latest issues of periodicals received in the library:"+"\n\n"+("\n".join(bigList)))
+output = ("As of "+str(readableToday)+" these are the latest issues of periodicals received in the library:"+"\n\n"+("\n".join(bigList)))
 
 def sendemail(from_addr, to_addr_list, cc_addr_list,
               subject, message,
@@ -93,9 +94,9 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
     server.quit()
 
 sendemail(from_addr    = "pfalibraryjournals@gmail.com", 
-          to_addr_list = ["mcq@berkeley.edu","aharris@berkeley.edu"],
-          cc_addr_list = [], 
-          subject      = "OK now it works...", 
+          to_addr_list = ["mcq@berkeley.edu","etc@domain.com"],
+          cc_addr_list = ["more@domain.com"], 
+          subject      = "Latest Journals Received by PFA Library as of: "+(str(readableToday)), 
           message      = output,
           login        = "pfalibraryjournals",
           password     = "PASSWORD")
